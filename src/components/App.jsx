@@ -26,7 +26,11 @@ export const App = () => {
   const contacts = useSelector(state => state.contacts.contacts);
 
   useEffect(() => {
-    renderFilter();
+    setFilteredList(prevState => {
+      return contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter)
+      );
+    });
   }, [filter, contacts]);
 
   const handleSubmit = (e, name, number) => {
@@ -65,15 +69,15 @@ export const App = () => {
     // renderFilter();
   };
 
-  const renderFilter = () => {
-    // console.log(filter);
-    setFilteredList(prevState => {
-      return contacts.filter(contact =>
-        contact.name.toLowerCase().includes(filter)
-      );
-    });
-    // return filteredList;
-  };
+  // const renderFilter = () => {
+  //   // console.log(filter);
+  //   setFilteredList(prevState => {
+  //     return contacts.filter(contact =>
+  //       contact.name.toLowerCase().includes(filter)
+  //     );
+  //   });
+  //   // return filteredList;
+  // };
 
   const deleteContact = contactId => {
     // setContacts(prevState =>
