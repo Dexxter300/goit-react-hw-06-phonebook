@@ -1,6 +1,7 @@
 import css from './list.module.css';
 
 export const List = ({ contacts, deleteContact }) => {
+  // console.log(contacts);
   return (
     <>
       <ul className={css.list}>
